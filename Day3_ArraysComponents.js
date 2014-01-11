@@ -131,7 +131,7 @@ world[9][9]="Desert";
 
 if(world[0][0]=="Water"){
     console.log("WATER");
-} else if{world[0][0]=="Forest"){
+} else if(world[0][0]=="Forest"){
     console.log("Forest");
 }
 else {console.log("Desert");}
