@@ -1,7 +1,6 @@
 /**
  * Created by Daniel on 1/20/14.
  */
-
 var randomMonsterHealth=Math.floor((Math.random()*5)+5);
 var randomMonsterDamage=Math.floor((Math.random()*5)+5);
 
@@ -47,14 +46,14 @@ function makeMonster(world, monster, xx, yy){
     var dragonSpawn=.1;
     var returnValue="";
 
-    if (world[yy][xx]=="Forest" && spawnChance<koboldSpawn) {
-        returnValue = "You have encountered a "+monster[0][0]+"!";
+    if (world[xx][yy]=="Forest" && spawnChance<koboldSpawn) {
+        returnValue = "You have encountered a "+monster[kobold][type]+"!";
     } else
-    if (world[yy][xx]=="Desert" && spawnChance<trollSpawn) {
-        returnValue = "You have encountered a "+monster[1][0]+"!";
+    if (world[xx][yy]=="Desert" && spawnChance<trollSpawn) {
+        returnValue = "You have encountered a "+monster[troll][type]+"!";
     } else
-    if (world[yy][xx]=="Water" && spawnChance<dragonSpawn){
-        returnValue = "You have encountered a "+monster[2][0]+"!";
+    if (world[xx][yy]=="Water" && spawnChance<dragonSpawn) {
+        returnValue = "You have encountered a "+monster[dragon][type]+"!";
     } else {
         returnValue = "No battles found.";
     }

@@ -60,7 +60,7 @@ world[3][8]="Desert";
 world[3][9]="Desert";
 
 world[4][0]="Water";
-world[4][1]="Forest";
+world[4][1]="Dungeon";
 world[4][2]="Forest";
 world[4][3]="Forest";
 world[4][4]="Forest";
@@ -105,7 +105,7 @@ world[7][9]="Desert";
 
 world[8][0]="Forest";
 world[8][1]="Forest";
-world[8][2]="Forest";
+world[8][2]="Dungeon";
 world[8][3]="Forest";
 world[8][4]="Forest";
 world[8][5]="Forest";
@@ -125,3 +125,65 @@ world[9][7]="Desert";
 world[9][8]="Desert";
 world[9][9]="Desert";
 
+function dungeonGenerator(world){
+    var dungeonX1=0;
+    var dungeonX2=1;
+    var dungeonY1=2;
+    var dungeonY2=3;
+    var firstVsSecondDungeonInstance = true;
+    var completedWorld=[];
+    completedWorld[0]=world;
+    completedWorld[1]=[];
+    completedWorld[2]=[];
+    completedWorld[3]=[];
+    completedWorld[4]=[];
+    completedWorld[5]=[];
+
+    for(i=0;i<world.length;i++){
+        for(j=0;j<world[i].length;j++){
+//            completedWorld[2][i][j]=makeMonster(world, xx, yy, 0);
+            if(world[i][j]=="Dungeon" && firstVsSecondDungeonInstance==true){
+                dungeonX1=i;
+                dungeonY1=j;
+                firstVsSecondDungeonInstance = false;}
+            else if(world[i][j]=="Dungeon"){
+                dungeonX2=i;
+                dungeonY2=j;
+        }
+    }
+}
+    for(i=0;i<world.length;i++){
+        completedWorld[1][i]=[];
+        completedWorld[2][i]=[];
+        completedWorld[3][i]=[];
+        completedWorld[4][i]=[];
+        completedWorld[5][i]=[];
+
+    for(j=0;j<world[i];j++){
+    var randomWorldSeed=Math.random();
+//    Cave, lava, dirt, ladder
+    if((i==dungeonX1 && j==dungeonY1)
+        ||
+        (i==dungeonX2 && j==dungeonY2) ){
+        completedWorld[1][i][j]="Ladder";
+        } else if(randomWorldSeed<=1/3){
+            completedWorld[1][i][j]="Caves";
+        } else if(randomWorldSeed>=2/3){
+        completedWorld[1][i][j]="Lava";
+        } else{
+        completedWorld[1][i][j]="Dirt";
+        }
+    }
+
+    }
+    for (i=0; i<world.length; i++) {
+        for(j=0; j<world[i].length; j++) {
+            completedWorld[2][i][j]=makeMonster(world, xx, yy, 0);
+        }
+    }
+return completedWorld;
+}
+
+var twoLayerWorld = dungeonGenerator(world);
+//console.log(twoLayerWorld[0]);
+//console.log(twoLayerWorld[1]);
