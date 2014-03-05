@@ -5,7 +5,9 @@
 
 (function (){
 
-    var 
+    var programmers = 0;
+    var programmersNeeded = 0;
+    var project = "";
 
 
 
@@ -16,3 +18,7 @@
 
 
 }());
+
+
+
+
